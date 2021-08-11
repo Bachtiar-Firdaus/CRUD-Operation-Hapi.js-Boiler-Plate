@@ -1,0 +1,84 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CRUD-Hapi-Exa1",
+		"_postman_id": "7a87d06d-e030-9f51-3140-5ca2a89b9902",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Feed Data",
+			"request": {
+				"url": "http://localhost:1298/person",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\": \"XYZ\",\n\t\"lastname\": \"MNO\",\n\t\"email\": \"xyzmno@gmail.com\",\n\t\"gender\": \"male\",\n\t\"age\": 29\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Data",
+			"request": {
+				"url": "http://localhost:1298/person",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data by Id",
+			"request": {
+				"url": "http://localhost:1298/person/61124405ce193745ac86fe53",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Data by Id",
+			"request": {
+				"url": "http://localhost:1298/person/610d43b5ecf09308a835d81e",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"610d43b5ecf09308a835d81e\",\n\t\"firstname\": \"Darpan\",\n\t\"lastname\": \"Chachpara\",\n\t\"email\": \"dc126111@gmail.com\",\n\t\"gender\": \"male\",\n\t\"age\": 22\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Data by Id",
+			"request": {
+				"url": "http://localhost:1298/person/61124405ce193745ac86fe53",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

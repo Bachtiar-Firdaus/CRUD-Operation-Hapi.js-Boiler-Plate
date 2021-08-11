@@ -1,0 +1,84 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CRUD-Hapi-Exa2",
+		"_postman_id": "22c9e334-a04c-54e1-ad62-f52bb63e8649",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Feed Data",
+			"request": {
+				"url": "http://localhost:1000/dogs",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Miso\",\n\t\"breed\": \"Honk\",\n\t\"age\": 11,\n\t\"image\": \"Vista\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Data",
+			"request": {
+				"url": "http://localhost:1000/dogs",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data by Id",
+			"request": {
+				"url": "http://localhost:1000/dogs/6104ff15174f4571d88742c6",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Data by Id",
+			"request": {
+				"url": "http://localhost:1000/dogs/6104ff15174f4571d88742c6",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"DC126\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Data by Id",
+			"request": {
+				"url": "http://localhost:1000/dogs/6104ff15174f4571d88742c6",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

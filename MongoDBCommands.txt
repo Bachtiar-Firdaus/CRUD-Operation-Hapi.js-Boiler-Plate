@@ -1,0 +1,175 @@
+//RAW SHELL OUTPUT is in JSON Format
+//on CMD type mongod to start the mongo server
+//on CMD type mongocto see the data, showdbs..
+
+show dbs              //show databases
+
+db                    // on which db we are
+
+use darpan_db         //to change db
+
+db                    //to check on which db we are
+
+db.DVDV.drop()                       //to drop collections
+
+
+db.createCollection("DVDV")        //to create collection
+
+db.user.find()                      //to check which data is present in that collections
+
+db.user.insert(
+{
+    "Name":"VD" , "Number":2378562
+})                                 //to create collection with document using key-value pair(first-way)
+
+db.user.insertOne(
+{
+    "Name":"DC" , "Number":743498368778  
+}
+)                                   //to create collection with document using key-value pair(second-way) but only single document 
+
+db.user.insertMany(
+[
+{
+    "Name":"KD" , "Number":894656  
+},
+{
+    "Name":"PC" , "Number":1236594  
+},
+{
+    "Name":"VDC" , "Number":00221155  
+}
+])                                  //to insert key value (n) number of values
+
+
+
+db.createCollection("DataType")
+db.DataType.insert({
+    "name":"Darpan Chachpara", //string
+    "mobile":99556633, //number
+    "doj":Date(),  //system date
+    "salary":623632.00, //double
+    "roles":["Staff","TEchnical","Software Developer"],  //array
+    "Address":{
+        "City":"Delhi",
+        "Area":"Sagar",
+        "Pin":98563 
+    },  //object
+    "isAsmin":false, //boolean(T/F)
+    "dor":null //empty
+
+})
+db.DataType.find()
+
+db.createCollection("Read_Query")
+db.Read_Query.insertMany(
+[
+{"name":"Meet","mobile":5648875,"city":"Asam","marks":56},
+{"name":"Bhargav","mobile":98798564,"city":"Delhi","marks":89},
+{"name":"Darshan","mobile":232649,"city":"Maharashtra","marks":96},
+{"name":"Rakesh","mobile":798964,"city":"Mumbai","marks":98},
+{"name":"Udit","mobile":865565,"city":"Gujarat","marks":65},
+{"name":"Ruchit","mobile":66595,"city":"Kolkata","marks":85},
+])
+db.Read_Query.find()     //fetch entire data
+db.Read_Query.find({})   //fetch data with conditions
+db.Read_Query.findOne()  //fetch first entry in the table
+db.Read_Query.find({"name":"Udit"})  //example of condition statement
+
+
+db.Read_Query.find({},{"name":1,"city":1})     //will show only data you want
+db.Read_Query.find({},{"name":1,"city":1,"_id":0})   // 1 - show data , 0 - hide data
+db.Read_Query.find({"name":"Rakesh"},{"marks":1,"_id":0})   // with condition marks of assign name only
+
+
+db.Read_Query.find({"city":{$in:["Mumbai","Delhi","Maharashtra","Huwai"]}})  // (check in data) using $in operator will show only that data which is available if not present then i will not show that data
+db.Read_Query.find({"marks":{$lt:65}})      //marks less than 65
+db.Read_Query.find({"marks":{$lte:65}})     //marks less than equal to 65
+db.Read_Query.find({"marks":{$gt:65}})      //marks greater than 65
+db.Read_Query.find({"marks":{$gte:65}})     //marks greater than equal to 65
+db.Read_Query.find({"marks":{$ne:65}})      //marks not equal than 65
+
+
+db.Read_Query.find({$or:[{"marks":89},{"city":"Mumbai"}]})    // []-used because we are using 2 condition , any conditon true it will show that data
+db.Read_Query.find({$and:[{"marks":89},{"city":"Mumbai"}]})   // if any of the condition is false then it will not show data 
+db.Read_Query.find({$and:[{"marks":89},{"city":"Delhi"}]})    // will show data when all the condition is true
+db.Read_Query.find({"city":"Delhi","marks":89})               // , is nothing but AND operator both condition true will show data
+db.Read_Query.find({"city":"Mumbai","marks":89})              // , is nothing but AND operator if any condition is false then no data
+
+
+db.Read_Query.find({}).limit(5)                //will limit data from top of the table(starting)[{1,-1} will not work in limit]
+db.Read_Query.find({}).sort({"name":1})        //will sort data in ascending order because (1 is for asc)
+db.Read_Query.find({}).sort({"name":-1})       //will sort data in descending order because (-1 is for desc)
+db.Read_Query.find({}).skip(3)                //will skip data from top of the table(starting)[{1,-1} will not work in skip]
+db.Read_Query.find({"marks":{$gt:85}},{"name":1,"marks":1,"_id":0}).sort({"marks":-1}).limit(3)       //name with marks in desc order   // with condition you want
+//({},{})  ------>   were first {} is used for conditin and second {} is used for value
+// (projection),(condition),(sorting),(limit) have applied in above example
+
+// [city and "city"]  --> both will work
+db.Read_Query.update({city:"Mumbai"},{$set:{name:"Rakesh BHAI",mobile:111111,marks:63.2}})                          //will update only single record
+db.Read_Query.updateOne({city:"Mumbai"},{$set:{name:"Rakesh SIr",mobile:111111,marks:63.2}})                        //will update only single record
+db.Read_Query.update({city:"Mumbai"},{$set:{name:"Rakesh Lost",mobile:89988998,marks:88.2}},{"multi":true})        //will update multi record
+db.Read_Query.updateMany({city:"Mumbai"},{$set:{name:"Rakesh FK",mobile:12211441,marks:93.2}})                      //will update multi record
+db.Read_Query.find()
+
+
+//db.Read_Query.remove({})                             // to remove all record
+//db.Read_Query.deleteMany({})                        // to delete all record
+//db.Read_Query.remove({"city":"Mumbai"})              //  to remove multiple record
+//db.Read_Query.deleteMany({"city":"Mumbai"})         //   to delete multiple record
+//db.Read_Query.remove({"city":"Mumbai"},1)         //  to remove single record
+//db.Read_Query.deleteOne({"city":"Mumbai"})         //   to delete single record
+
+
+
+db.Read_Query.count()                  // total count of the record
+db.Read_Query.distinct("city")        //for data redundency(to remove identical[same] data and show it once)
+//db.Read_Query.copyTo("target")      // will copy data to new collection, if collection is not present then it will create new collection
+//db.target.find()
+//db.target.replaceOne({"id":104},{"name":"Bachan"})  //note in this function it will rename but in rest of the filled it will show null value 
+//so take care while performing the above commad
+db.Read_Query.renameCollection("My_Read_Query")     //to rename the collection
+
+
+db.getCollectionNames()        //to see all the collection in your database
+db.getName()                   // to see on which database your are working now
+db.version()                    // to see the version
+
+
+
+db.My_Read_Query.find({})
+db.My_Read_Query.ensureIndex({"id":1})        //to add index in ascending order[1]
+db.My_Read_Query.ensureIndex({"id":-1})       //to add index in descending order[-1]
+db.My_Read_Query.dropIndex({"id":1})          //to drop index in ascending order[1]
+db.My_Read_Query.dropIndex({"id":-1})         //to drop index in descending order[-1]
+
+
+
+db.My_Read_Query.find({})
+db.My_Read_Query.aggregate([{$group:{_id:"$city",TotalCity:{$sum:1}}}])      //will show number of times (occurance)  city appear
+
+
+
+//[ Flow ===> Database ---> Collection ---> Document ]
+
+//for entire DATABASE(all database)
+//if yo want to dump whole database , go to CMD in a particular directory
+//mongodump ---> to dump all the database (backup)
+//mongorestore ---> to restore all the database
+//db.droptablename ---> to delete any(collection)
+
+//for entire collection only(single database)
+//mongodump --db Name ---> to dump the collection you want(backup)
+//mongorestore --db Name dump/Name  ---> you have to give path to restore that collection
+
+
+//for selected document inside collection
+//mongodump --db Name --collection documentName  ---> to dump the document you want(backup)
+//db.documentName.drop()   //to drop document
+//mongorestore --db Name --collection documentName dump/Name/documentName  ---> you have to give path to restore that collection [but will not work]
+//mongorestore --db Name --collection documentName dump/Name/documentName.json/bson ---> (to restore selected file only then use json/bson) this is mandatory step to restore any document
+
+
+
+
+
