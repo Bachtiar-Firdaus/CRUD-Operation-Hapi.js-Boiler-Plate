@@ -1,0 +1,11 @@
+(1)// First was getting error, now working well
+    // config: {
+    //     state: {
+    //       parse: false, // parse and store in request.state
+    //       failAction: 'ignore' // may also be 'ignore' or 'log'
+    //     }
+    //   },
+
+
+(2) In package.json in main: 'server.js' is written why not different file is written ? main file is used for ? 
+   -> i think default file will be main.js right which will execute.

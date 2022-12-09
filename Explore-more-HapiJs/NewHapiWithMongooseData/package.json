@@ -1,0 +1,21 @@
+{
+  "name": "newhapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.5",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/vision": "^6.1.0",
+    "handlebars": "^4.7.7",
+    "mongoose": "^5.13.2",
+    "path": "^0.12.7",
+    "register": "0.0.0",
+    "save": "^2.4.0"
+  }
+}
